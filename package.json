@@ -54,6 +54,7 @@
     "knex": "^0.21.19",
     "moment": "^2.29.1",
     "mysql2": "^2.2.5",
+    "neo4j-driver": "^4.4.6",
     "objection": "^2.2.15",
     "query-string": "^7.0.1",
     "reflect-metadata": "^0.1.13",
@@ -102,7 +103,9 @@
     ],
     "moduleNameMapper": {
       "@libs/core/(.*)": "<rootDir>/libs/core/src/$1",
-      "@libs/core": "<rootDir>/libs/core/src"
+      "@libs/core": "<rootDir>/libs/core/src",
+      "@libs/nest-neo4j/(.*)": "<rootDir>/libs/nest-neo4j/src/$1",
+      "@libs/nest-neo4j": "<rootDir>/libs/nest-neo4j/src"
     }
   }
 }

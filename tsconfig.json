@@ -22,6 +22,12 @@
       ],
       "@libs/core/*": [
         "libs/core/src/*"
+      ],
+      "@libs/nest-neo4j": [
+        "libs/nest-neo4j/src"
+      ],
+      "@libs/nest-neo4j/*": [
+        "libs/nest-neo4j/src/*"
       ]
     }
   },

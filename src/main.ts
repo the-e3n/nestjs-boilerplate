@@ -16,7 +16,7 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(helmet());
-  app.use(rateLimit({ windowMs: 60, max: 50 }));
+  // app.use(rateLimit({ windowMs: 60, max: 50 }));
 
   // guards
   app.useGlobalGuards(new RequestGuard());
@@ -26,7 +26,7 @@ async function bootstrap() {
   app.useGlobalFilters(new ExceptionFilter(httpAdapter));
 
   // interceptors
-  app.useGlobalInterceptors(new TimeoutInterceptor());
+  // app.useGlobalInterceptors(new TimeoutInterceptor());
 
   const config = app.get(ConfigService);
   await app.listen(config.get('app.port'));

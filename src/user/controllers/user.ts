@@ -1,5 +1,5 @@
 import { Request, Response, RestController, WithAlias } from '@libs/core';
-import { Controller, Get, Req, Res } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { UserService } from '../services';
 import { UserDetailTransformer } from '@app/transformer';
 
@@ -9,15 +9,22 @@ export class UserController extends RestController {
     super();
   }
 
-  @Get('/profile')
+  @Get()
   @WithAlias('auth.profile')
   async getProfile(
     @Req() req: Request,
     @Res() res: Response,
   ): Promise<Response> {
-    const user = await this.users.get();
-    return res.success(
-      await this.transform(user, new UserDetailTransformer(), { req }),
-    );
+    const user = await this.users.get(req.all());
+    return res.success(user);
+  }
+
+  @Post()
+  async createUser(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<Response> {
+    const user = await this.users.create(req.all());
+    return res.success('');
   }
 }
