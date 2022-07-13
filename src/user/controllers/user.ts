@@ -15,7 +15,7 @@ export class UserController extends RestController {
     @Req() req: Request,
     @Res() res: Response,
   ): Promise<Response> {
-    const user = await this.users.get(req.all());
+    const user = await this.users.get({ query: req.all()?.query });
     return res.success(user);
   }
 
