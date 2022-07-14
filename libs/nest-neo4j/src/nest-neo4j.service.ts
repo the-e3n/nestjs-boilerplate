@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { isInt, Neo4jError, Record } from 'neo4j-driver';
+import { driver, isInt, Neo4jError, Record } from 'neo4j-driver';
 import { inSafeRange } from 'neo4j-driver-core';
 import { getReadSession, getSession } from './connection';
 
@@ -34,14 +34,14 @@ export class NestNeo4jService {
       const result = await getReadSession().run(query);
       console.log(
         '🚀 ~ file: nest-neo4j.service.ts ~ line 35 ~ NestNeo4jService ~ run ~ result',
-        result,
+        JSON.stringify(result, null, 2),
       );
       return result;
     }
     const result = await getSession().run(query);
     console.log(
       '🚀 ~ file: nest-neo4j.service.ts ~ line 42 ~ NestNeo4jService ~ run ~ result',
-      result,
+      JSON.stringify(result, null, 2),
     );
     return result;
   }
