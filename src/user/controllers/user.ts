@@ -25,6 +25,15 @@ export class UserController extends RestController {
     return res.success(count);
   }
 
+  @Get('/benchmark')
+  async benchmark(
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<Response> {
+    const user = this.users.runBenchmark(req.all().n);
+    return res.success('Done');
+  }
+
   @Post()
   async createUser(
     @Req() req: Request,
