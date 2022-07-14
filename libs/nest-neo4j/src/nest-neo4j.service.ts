@@ -33,6 +33,7 @@ export class NestNeo4jService {
     console.log(
       '🚀 ~ file: nest-neo4j.service.ts ~ line 34 ~ NestNeo4jService ~ run ~ read',
       read,
+      query,
     );
     if (read) {
       const result = await getReadSession().run(query);

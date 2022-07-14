@@ -65,6 +65,10 @@ export class UserService {
   ) {}
 
   async get({ query }): Promise<Record<string, any>> {
+    console.log(
+      '🚀 ~ file: user.ts ~ line 68 ~ UserService ~ get ~ query',
+      query,
+    );
     const data = await this.service.run(query || 'MATCH (n) RETURN n', true);
     return data;
   }
