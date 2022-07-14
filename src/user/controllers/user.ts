@@ -19,7 +19,7 @@ export class UserController extends RestController {
     return res.success(user);
   }
 
-  @Get('count')
+  @Get('/count')
   async getCount(@Req() req: Request, @Res() res: Response): Promise<Response> {
     const count = await this.users.getCount();
     return res.success(count);
