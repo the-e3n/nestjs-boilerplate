@@ -72,6 +72,10 @@ export class UserService {
     const data = await this.service.run(query || 'MATCH (n) RETURN n', true);
     return data;
   }
+  async getCount(): Promise<Record<string, any>> {
+    const data = await this.service.getCount();
+    return data;
+  }
 
   async create(inputs?: Record<string, any>) {
     for (let i = 0; i < 2; i++) {

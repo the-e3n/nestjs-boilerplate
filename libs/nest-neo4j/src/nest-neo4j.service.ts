@@ -29,6 +29,10 @@ export class NestNeo4jService {
       };
     });
   }
+  async getCount() {
+    const result = await this.run('MATCH (n) RETURN count(*)');
+    return result.records[0].get('count(*)').toNumber();
+  }
   async run(query: string, read?: boolean): Promise<any> {
     // if (read) {
     //   const result = await getReadSession().run(query);
