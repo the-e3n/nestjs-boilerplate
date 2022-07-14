@@ -29,20 +29,16 @@ export class NestNeo4jService {
       };
     });
   }
-  async run(query: string, read: boolean = false): Promise<any> {
+  async run(query: string, read: boolean): Promise<any> {
+    console.log(
+      '🚀 ~ file: nest-neo4j.service.ts ~ line 34 ~ NestNeo4jService ~ run ~ read',
+      read,
+    );
     if (read) {
       const result = await getReadSession().run(query);
-      console.log(
-        '🚀 ~ file: nest-neo4j.service.ts ~ line 35 ~ NestNeo4jService ~ run ~ result',
-        JSON.stringify(result, null, 2),
-      );
       return result;
     }
     const result = await getSession().run(query);
-    console.log(
-      '🚀 ~ file: nest-neo4j.service.ts ~ line 42 ~ NestNeo4jService ~ run ~ result',
-      JSON.stringify(result, null, 2),
-    );
     return result;
   }
 }
