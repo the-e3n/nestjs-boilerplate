@@ -30,11 +30,6 @@ export class NestNeo4jService {
     });
   }
   async run(query: string, read?: boolean): Promise<any> {
-    console.log(
-      '🚀 ~ file: nest-neo4j.service.ts ~ line 34 ~ NestNeo4jService ~ run ~ read',
-      read,
-      query,
-    );
     if (read) {
       const result = await getReadSession().run(query);
       return result;
