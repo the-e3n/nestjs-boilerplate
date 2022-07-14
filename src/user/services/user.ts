@@ -83,8 +83,16 @@ export class UserService {
       const data = await this.service.run(
         `CREATE (n:Space {uuid: "${id}", name: "Space ${spaces++}"}) `,
       );
-      await this.service.run(
+      console.log(
+        '🚀 ~ file: user.ts ~ line 86 ~ UserService ~ create ~ Space',
+        data,
+      );
+      const r = await this.service.run(
         `MATCH (n:Space {uuid: "${id}"}),(m:Space{uuid:"${prevNode}"}) CREATE (n)-[:SubSpace]->(m)`,
+      );
+      console.log(
+        '🚀 ~ file: user.ts ~ line 93 ~ UserService ~ create ~ relation',
+        r,
       );
       for (const leaf of leafs(`${spaces}_`)) {
         await this.service.run(
@@ -92,6 +100,7 @@ export class UserService {
         );
       }
       prevNode = id;
+      console.log(`${spaces}------------------------------------`);
     }
   }
 
