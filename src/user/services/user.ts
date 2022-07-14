@@ -65,7 +65,7 @@ export class UserService {
   ) {}
 
   async get({ query }): Promise<Record<string, any>> {
-    const data = await this.service.run(query || 'MATCH (n) RETURN n');
+    const data = await this.service.run(query || 'MATCH (n) RETURN n', true);
     return data;
   }
 

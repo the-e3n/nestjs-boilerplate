@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { isInt, Neo4jError, Record } from 'neo4j-driver';
 import { inSafeRange } from 'neo4j-driver-core';
-import { getSession } from './connection';
+import { getReadSession, getSession } from './connection';
 
 @Injectable()
 export class NestNeo4jService {
@@ -29,8 +29,20 @@ export class NestNeo4jService {
       };
     });
   }
-  async run(query: string): Promise<any> {
+  async run(query: string, read: boolean = false): Promise<any> {
+    if (read) {
+      const result = await getReadSession().run(query);
+      console.log(
+        '🚀 ~ file: nest-neo4j.service.ts ~ line 35 ~ NestNeo4jService ~ run ~ result',
+        result,
+      );
+      return result;
+    }
     const result = await getSession().run(query);
-    return result.records;
+    console.log(
+      '🚀 ~ file: nest-neo4j.service.ts ~ line 42 ~ NestNeo4jService ~ run ~ result',
+      result,
+    );
+    return result;
   }
 }

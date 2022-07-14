@@ -25,6 +25,6 @@ export class UserController extends RestController {
     @Res() res: Response,
   ): Promise<Response> {
     const user = await this.users.create(req.all());
-    return res.success('');
+    return res.success('Done');
   }
 }
