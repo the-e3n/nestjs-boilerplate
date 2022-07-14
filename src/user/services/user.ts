@@ -74,10 +74,6 @@ export class UserService {
   }
 
   async create(inputs?: Record<string, any>) {
-    console.log(
-      '🚀 ~ file: user.ts ~ line 73 ~ UserService ~ create ~ inputs',
-      inputs,
-    );
     for (let i = 0; i < 2; i++) {
       const id = uuid();
       const data = await this.service.run(
