@@ -30,10 +30,10 @@ export class NestNeo4jService {
     });
   }
   async run(query: string, read?: boolean): Promise<any> {
-    if (read) {
-      const result = await getReadSession().run(query);
-      return result;
-    }
+    // if (read) {
+    //   const result = await getReadSession().run(query);
+    //   return result;
+    // }
     const result = await getSession().run(query);
     return result;
   }
