@@ -5,7 +5,11 @@ let readDriver: Driver;
 
 export const getSession = () => {
   if (!driver) {
-    driver = neo4j.driver(process.env.NEO4J_URI || 'neo4j://localhost:7687');
+    driver = neo4j.driver(
+      process.env.NEO4J_URI || 'neo4j://localhost:7687',
+      null,
+      {},
+    );
   }
   const session = driver.session();
   return session;
@@ -16,6 +20,8 @@ export const getReadSession = () => {
       process.env.NEO4J_READ_URI || 'neo4j://localhost:7687',
     );
   }
-  const session = readDriver.session();
+  const session = readDriver.session({
+    defaultAccessMode: neo4j.session.READ,
+  });
   return session;
 };
